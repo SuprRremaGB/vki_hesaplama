@@ -34,6 +34,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Color cardColor = rkPasifCardBackColor;
   cinsiyet seciliCinsiyet;
   int height = 180;
+  int weight = 50;
+  int yas = 20;
 
   @override
   Widget build(BuildContext context) {
@@ -92,8 +94,11 @@ class _MyHomePageState extends State<MyHomePage> {
               Colors.red,
               Column(
                 children: [
+                  SizedBox(
+                    height: 15,
+                  ),
                   Text(
-                    "HEIGHT",
+                    "BOY",
                     style: tsActivCardColor,
                   ),
                   Row(
@@ -128,6 +133,137 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
+
+          Row(
+            children: [
+              Expanded(
+                child: OrtakCard(
+                      () {},
+                  Colors.red,
+                  Column(
+                    children: [
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text(
+                        "KİLO",
+                        style: tsActivCardColor,
+                      ),
+                      Row(
+                        textBaseline: TextBaseline.alphabetic,
+                        crossAxisAlignment: CrossAxisAlignment.baseline,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            weight.toString(),
+                            style: tsHeightStyle,
+                          ),
+                          Text(
+                            "kg",
+                            style: tsCmStyle,
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ElevatedButton(
+                              style: ElevatedButton.styleFrom(shape: CircleBorder(),
+                              padding: EdgeInsets.all(20),
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                weight--;
+                              });
+                            },
+                            child:
+                            Icon(
+                                Icons.remove_outlined
+                            ),
+                          ),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(shape: CircleBorder(),padding: EdgeInsets.all(20),),
+                            onPressed: () {
+                              setState(() {
+                                weight++;
+                              });
+                            },
+                            child:
+                            Icon(
+                                Icons.add_outlined
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 10,),
+                    ],
+                  ),
+                ),
+              ),
+              Expanded(
+                child: OrtakCard(
+                      () {},
+                  Colors.red,
+                  Column(
+                    children: [
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text(
+                        "YAŞ",
+                        style: tsActivCardColor,
+                      ),
+                      Row(
+                        textBaseline: TextBaseline.alphabetic,
+                        crossAxisAlignment: CrossAxisAlignment.baseline,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            yas.toString(),
+                            style: tsHeightStyle,
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              shape: CircleBorder(),
+                              padding: EdgeInsets.all(20),
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                yas--;
+                              });
+                            },
+                            child:
+                            Icon(
+                                Icons.remove_outlined
+                            ),
+                          ),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(shape: CircleBorder(),padding: EdgeInsets.all(20),),
+                            onPressed: () {
+                              setState(() {
+                                yas++;
+                              });
+                            },
+                            child:
+                            Icon(
+                                Icons.add_outlined
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 10,),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+
         ],
       ),
     );
