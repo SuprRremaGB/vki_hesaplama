@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vki_hesaplama/card_widget.dart';
+import 'package:vki_hesaplama/ikinci_ekran.dart';
 import 'package:vki_hesaplama/sabitler.dart';
 
 void main() {
@@ -36,6 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int height = 180;
   int weight = 50;
   int yas = 20;
+  double vki;
 
   @override
   Widget build(BuildContext context) {
@@ -133,12 +135,11 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
-
           Row(
             children: [
               Expanded(
                 child: OrtakCard(
-                      () {},
+                  () {},
                   Colors.red,
                   Column(
                     children: [
@@ -168,7 +169,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           ElevatedButton(
-                              style: ElevatedButton.styleFrom(shape: CircleBorder(),
+                            style: ElevatedButton.styleFrom(
+                              shape: CircleBorder(),
                               padding: EdgeInsets.all(20),
                             ),
                             onPressed: () {
@@ -176,33 +178,32 @@ class _MyHomePageState extends State<MyHomePage> {
                                 weight--;
                               });
                             },
-                            child:
-                            Icon(
-                                Icons.remove_outlined
-                            ),
+                            child: Icon(Icons.remove_outlined),
                           ),
                           ElevatedButton(
-                            style: ElevatedButton.styleFrom(shape: CircleBorder(),padding: EdgeInsets.all(20),),
+                            style: ElevatedButton.styleFrom(
+                              shape: CircleBorder(),
+                              padding: EdgeInsets.all(20),
+                            ),
                             onPressed: () {
                               setState(() {
                                 weight++;
                               });
                             },
-                            child:
-                            Icon(
-                                Icons.add_outlined
-                            ),
+                            child: Icon(Icons.add_outlined),
                           ),
                         ],
                       ),
-                      SizedBox(height: 10,),
+                      SizedBox(
+                        height: 10,
+                      ),
                     ],
                   ),
                 ),
               ),
               Expanded(
                 child: OrtakCard(
-                      () {},
+                  () {},
                   Colors.red,
                   Column(
                     children: [
@@ -237,33 +238,53 @@ class _MyHomePageState extends State<MyHomePage> {
                                 yas--;
                               });
                             },
-                            child:
-                            Icon(
-                                Icons.remove_outlined
-                            ),
+                            child: Icon(Icons.remove_outlined),
                           ),
                           ElevatedButton(
-                            style: ElevatedButton.styleFrom(shape: CircleBorder(),padding: EdgeInsets.all(20),),
+                            style: ElevatedButton.styleFrom(
+                              shape: CircleBorder(),
+                              padding: EdgeInsets.all(20),
+                            ),
                             onPressed: () {
                               setState(() {
                                 yas++;
                               });
                             },
-                            child:
-                            Icon(
-                                Icons.add_outlined
-                            ),
+                            child: Icon(Icons.add_outlined),
                           ),
                         ],
                       ),
-                      SizedBox(height: 10,),
+                      SizedBox(
+                        height: 10,
+                      ),
                     ],
                   ),
                 ),
               ),
             ],
           ),
-
+          Container(
+            width: double.infinity,
+            height: 75,
+            child: ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  vki = weight/((height/100)*(height/100));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Ekran2(
+                        weight: weight,
+                        height: height,
+                        vki: vki,
+                      ),
+                    ),
+                  );
+                });
+              },
+              child: Text("HESAPLA"),
+            ),
+          )
         ],
       ),
     );
